@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+requests
+python-multipart
+fpdf2
+pytest
+requests-mock
+httpx

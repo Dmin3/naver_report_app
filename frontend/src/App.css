@@ -1,0 +1,29 @@
+.App {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border: none;
+  border-radius: 10px;
+}
+
+.btn-primary {
+  background-color: #03C75A; /* Naver Green */
+  border-color: #03C75A;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #02b050;
+  border-color: #02b050;
+}
+
+.btn-success {
+  background-color: #2DB400;
+  border-color: #2DB400;
+}
+
+.spinner-border {
+  margin-right: 8px;
+}
