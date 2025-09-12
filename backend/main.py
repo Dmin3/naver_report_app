@@ -22,6 +22,7 @@ app = FastAPI()
 # 프론트엔드 (React App)가 3000번 포트에서 실행될 것이므로, 해당 오리진을 허용
 origins = [
     "http://localhost:3000",
+    "http://192.168.111.128"
 ]
 
 app.add_middleware(
