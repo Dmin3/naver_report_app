@@ -10,8 +10,8 @@ function App() {
     <Router>
       <div className="App container mt-5">
         <header className="text-center mb-5">
-          <h1>네이버 쇼핑 트렌드 PDF 보고서 생성기</h1>
-          <p className="lead">카테고리와 기간을 선택하여 트렌드 보고서를 생성하세요.</p>
+          <h1>네이버 쇼핑 트렌드 분석 AI</h1>
+          <p className="lead">궁금한 키워드나 카테고리를 입력하고, AI가 찾아낸 숨겨진 시장 트렌드를 발견해 보세요.</p>
         </header>
 
         <div className="card p-4">

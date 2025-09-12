@@ -107,7 +107,7 @@ function ProductReport() {
     const formattedEndDate = endDate.toISOString().split('T')[0];
 
     try {
-      const response = await fetch('http://localhost:8000/api/report', {
+      const response = await fetch('/api/report', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

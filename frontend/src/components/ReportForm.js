@@ -23,6 +23,9 @@ const ReportForm = ({
   return (
     <form onSubmit={handleSubmit}>
       {/* Category Selectors */}
+       <div className="alert alert-info" role="alert">
+          네이버 데이터랩 <a href="https://datalab.naver.com/shoppingInsight/sCategory.naver" target="_blank" rel="noopener noreferrer">쇼핑인사이트</a> 실시간 시장 동향을 파악하여 핵심 트렌드를 분석합니다.
+        </div>
       <div className="mb-3">
         <div className="row">
           <div className="col">
@@ -57,9 +60,7 @@ const ReportForm = ({
             </select>
           </div>
         </div>
-        <div className="form-text mt-2">
-          네이버 데이터랩 쇼핑인사이트의 <a href="https://developers.naver.com/docs/serviceapi/datalab/shopping/shopping.md#%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC-%EC%BD%94%EB%93%9C" target="_blank" rel="noopener noreferrer">카테고리 코드</a>를 선택하세요.
-        </div>
+        
       </div>
 
       {/* Date Range Picker */}

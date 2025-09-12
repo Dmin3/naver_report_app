@@ -66,7 +66,7 @@ function KeywordReport() {
 
     try {
       setApiState(prev => ({ ...prev, isLoading: { ...prev.isLoading, keywords: true } }));
-      const response = await fetch("http://localhost:8000/api/keyword", {
+      const response = await fetch("/api/keyword", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ keyword: formState.keyword }),
@@ -96,7 +96,7 @@ function KeywordReport() {
     const formattedEndDate = endDate.toISOString().split('T')[0];
     
     try {
-      const response = await fetch("http://localhost:8000/api/keyword/analyze", {
+      const response = await fetch("/api/keyword/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -161,6 +161,9 @@ function KeywordReport() {
 
   return (
     <>
+      <div className="alert alert-info" role="alert">
+        <strong>사용법:</strong> 검색어를 입력하여 연관 키워드를 조회하고, 보고서에 포함할 키워드를 최대 5개까지 선택하세요. 그 다음, 기간, 연령, 성별 등 상세 옵션을 설정하고 '보고서 생성하기' 버튼을 클릭하세요.
+      </div>
       <KeywordSearchForm
         handleSubmit={handleKeywordSearch}
         keyword={formState.keyword}
