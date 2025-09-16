@@ -3,8 +3,8 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 
-// PDF.js worker 설정 (최신 .mjs 파일 경로로 수정)
-pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.min.mjs`;
+// PDF.js worker 설정 (개발 서버 호환성을 위해 .js 파일로 수정)
+pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.min.js`;
 
 const ReportResult = ({ error, pdfBlob }) => {
   const [numPages, setNumPages] = useState(null);
