@@ -3,6 +3,7 @@
 **AI를 활용하여 네이버 데이터랩 쇼핑 인사이트 데이터를 분석하여 PDF 분석 보고서를 자동으로 생성하는 웹 애플리케이션입니다.**
 
 이 프로젝트는 시장의 흐름을 빠르고 정확하게 파악하고자 하는 소상공인, 마케터를 위해 만들어졌습니다. 복잡한 데이터 분석 과정을 AI를 통해 자동화하여 누구나 쉽게 비즈니스에 활용할 수 있는 인사이트를 제공합니다.
+- 🖥️ 웹 사이트 (https://shop-trend.duckdns.org)
 
 ## ✨ 주요 기능
 
@@ -59,5 +60,4 @@ npm start
 <img width="969" height="776" alt="image" src="https://github.com/user-attachments/assets/ee8b85b1-829d-475e-838d-0de328aff9bd" />
 
 
-## 🖥️ 웹 사이트
-- https://shop-trend.duckdns.org
+
