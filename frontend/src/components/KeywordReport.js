@@ -66,7 +66,7 @@ function KeywordReport() {
 
     try {
       setApiState(prev => ({ ...prev, isLoading: { ...prev.isLoading, keywords: true } }));
-      const response = await fetch("http://localhost:8000/api/keyword", {
+      const response = await fetch("/api/keyword", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ keyword: formState.keyword }),
@@ -97,7 +97,7 @@ function KeywordReport() {
     const formattedEndDate = endDate.toISOString().split('T')[0];
     
     try {
-      const response = await fetch("http://localhost:8000/api/keyword/analyze", {
+      const response = await fetch("/api/keyword/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
