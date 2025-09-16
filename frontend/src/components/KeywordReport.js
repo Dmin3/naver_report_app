@@ -196,6 +196,7 @@ function KeywordReport() {
           ageOptions={ageOptions}
           genderOptions={genderOptions}
         />
+        <div className="d-grid">
         <button
           type="submit"
           className="btn btn-primary btn-lg mt-4"
@@ -214,6 +215,7 @@ function KeywordReport() {
             "보고서 생성하기"
           )}
         </button>
+        </div>
       </form>
 
       <ReportResult error={apiState.error.report} pdfUrl={apiState.pdfUrl} />

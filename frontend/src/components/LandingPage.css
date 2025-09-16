@@ -1,0 +1,179 @@
+/* 구글 폰트 import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* :root 변수는 public/index.html의 body나 App.css 최상단에 두는 것이 더 좋습니다. */
+:root {
+    --bg-color: #FFFFFF;
+    --primary-color: #03C75A; /* 네이버 녹색 */
+    --text-color: #202020;
+    --text-color-muted: #666666;
+}
+
+/* body, html에 있던 스타일은 App.css나 index.css로 옮겨 전역적으로 적용하는 것이 좋습니다. */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.landing-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.landing-container.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cursor-light {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(3, 199, 90, 0.15) 0%, rgba(3, 199, 90, 0) 70%);
+    pointer-events: none;
+    z-index: 1;
+    transition: transform 0.1s ease-out;
+    transform: translate(-50%, -50%);
+}
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden; /* 파티클이 화면 밖으로 나가지 않도록 */
+}
+
+.particle {
+    position: absolute;
+    background-color: var(--primary-color);
+    animation-name: flow;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes flow {
+    from {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    to {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+}
+
+.content-wrapper {
+    animation: fadeIn 1.5s ease-out forwards;
+    max-width: 90%;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -1px;
+    color: var(--text-color);
+}
+
+h1 span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealChar 1s ease-out forwards;
+}
+
+@keyframes revealChar {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 300;
+    color: var(--text-color-muted);
+    max-width: 600px;
+    margin: 1.5rem auto 2.5rem;
+    line-height: 1.8;
+    opacity: 0;
+    animation: slideInUp 1s 0.8s ease-out forwards;
+}
+
+#try-it-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(3, 199, 90, 0.2);
+    opacity: 0;
+    animation: slideInUp 1s 1s ease-out forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+#try-it-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: skewX(-30deg);
+    animation: gleam 4s infinite ease-in-out;
+}
+
+@keyframes gleam {
+    0% { left: -100%; }
+    20% { left: 150%; }
+    100% { left: 150%; }
+}
+
+#try-it-btn:hover {
+    transform: translateY(-5px);
+    background-color: #02b350;
+    box-shadow: 0 15px 30px rgba(3, 199, 90, 0.25);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+        
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
