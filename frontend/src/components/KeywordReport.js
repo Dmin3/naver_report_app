@@ -22,7 +22,7 @@ function KeywordReport() {
   const [apiState, setApiState] = useState({
     isLoading: { keywords: false, report: false },
     error: { keywords: null, report: null, choice: null },
-    pdfUrl: null,
+    pdfBlob: null, // PDF blob 데이터를 저장할 상태
     relatedKeywords: [],
   });
 
@@ -66,7 +66,7 @@ function KeywordReport() {
 
     try {
       setApiState(prev => ({ ...prev, isLoading: { ...prev.isLoading, keywords: true } }));
-      const response = await fetch("/api/keyword", {
+      const response = await fetch("http://localhost:8000/api/keyword", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ keyword: formState.keyword }),
@@ -89,14 +89,15 @@ function KeywordReport() {
 
   const handleReportSubmit = async (e) => {
     e.preventDefault();
-    setApiState(prev => ({ ...prev, isLoading: { ...prev.isLoading, report: true }, pdfUrl: null, error: { ...prev.error, report: null } }));
+    // 보고서 생성 요청 전에 기존 pdfBlob과 에러 상태를 초기화합니다.
+    setApiState(prev => ({ ...prev, isLoading: { ...prev.isLoading, report: true }, pdfBlob: null, error: { ...prev.error, report: null } }));
 
     const { keyword, choicedKeywords, timeUnit, startDate, endDate, ages, gender } = formState;
     const formattedStartDate = startDate.toISOString().split('T')[0];
     const formattedEndDate = endDate.toISOString().split('T')[0];
     
     try {
-      const response = await fetch("/api/keyword/analyze", {
+      const response = await fetch("http://localhost:8000/api/keyword/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -116,8 +117,8 @@ function KeywordReport() {
       }
 
       const blob = await response.blob();
-      const url = URL.createObjectURL(blob);
-      setApiState(prev => ({ ...prev, pdfUrl: url }));
+      // blob 객체를 상태에 저장합니다.
+      setApiState(prev => ({ ...prev, pdfBlob: blob }));
     } catch (error) {
       console.error("Error generating report:", error);
       setApiState(prev => ({ ...prev, error: { ...prev.error, report: error.message } }));
@@ -218,7 +219,7 @@ function KeywordReport() {
         </div>
       </form>
 
-      <ReportResult error={apiState.error.report} pdfUrl={apiState.pdfUrl} />
+      <ReportResult error={apiState.error.report} pdfBlob={apiState.pdfBlob} />
     </>
   );
 }

@@ -25,7 +25,7 @@ function ProductReport() {
   const [apiState, setApiState] = useState({
     isLoading: false,
     error: null,
-    pdfUrl: null,
+    pdfBlob: null, // pdfUrl에서 pdfBlob으로 변경
   });
 
   const [seconds, setSeconds] = useState(0);
@@ -91,7 +91,7 @@ function ProductReport() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setApiState({ isLoading: true, error: null, pdfUrl: null });
+    setApiState({ isLoading: true, error: null, pdfBlob: null }); // pdfUrl에서 pdfBlob으로 변경
 
     const {
       categoryTitle,
@@ -107,7 +107,7 @@ function ProductReport() {
     const formattedEndDate = endDate.toISOString().split('T')[0];
 
     try {
-      const response = await fetch('/api/report', {
+      const response = await fetch('http://localhost:8000/api/report', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -127,11 +127,11 @@ function ProductReport() {
       }
 
       const blob = await response.blob();
-      const url = URL.createObjectURL(blob);
-      setApiState(prev => ({ ...prev, pdfUrl: url, error: null }));
+      // URL 생성 대신 blob을 직접 상태에 저장
+      setApiState(prev => ({ ...prev, pdfBlob: blob, error: null }));
     } catch (error) {
       console.error('Error generating report:', error);
-      setApiState(prev => ({ ...prev, error: error.message, pdfUrl: null }));
+      setApiState(prev => ({ ...prev, error: error.message, pdfBlob: null }));
     } finally {
       setApiState(prev => ({ ...prev, isLoading: false }));
     }
@@ -177,7 +177,7 @@ function ProductReport() {
         apiState={apiState}
         seconds={seconds}
       />
-      <ReportResult error={apiState.error} pdfUrl={apiState.pdfUrl} />
+      <ReportResult error={apiState.error} pdfBlob={apiState.pdfBlob} />
     </>
   );
 }

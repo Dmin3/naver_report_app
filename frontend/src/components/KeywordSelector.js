@@ -23,7 +23,7 @@ const KeywordSelector = ({
       </div>
       <div className="input-group">
         <input
-          className="keyword-input"
+          className="form-control"
           type="text"
           placeholder="키워드를 클릭해주세요!!"
           value={choicedKeywords.join(" ")}
